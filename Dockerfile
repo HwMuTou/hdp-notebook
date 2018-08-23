@@ -15,7 +15,7 @@ COPY ./sources.list /etc/apt/sources.list
 
 # 加入HDP2.5.3 命令行安装地址
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD
-RUN wget http://public-repo-1.hortonworks.com/HDP/ubuntu16/2.x/updates/2.5.3.0/hdp.list -O /etc/apt/sources.list.d/hdp.list
+RUN wget http://public-repo-1.hortonworks.com/HDP/ubuntu16/2.x/updates/2.6.5.0/hdp.list -O /etc/apt/sources.list.d/hdp.list
 
 RUN apt-get update
 
