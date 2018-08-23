@@ -4,3 +4,33 @@
 *.ptx
 *.cubin
 *.fatbin
+
+# don't ignore
+!.gitignore
+
+# ignore files related to intellij idea
+.idea
+.idea/*
+*.iml
+*.ipr
+
+**/logs
+
+# ignore files related to eclipse
+.settings
+.classpath
+.project
+
+# ignore build paths and files
+build.sbt
+**/target/
+icu-runner/dependency-reduced-pom.xml
+
+system/*
+
+*.db
+/model/*
+/storage/*
+
+# node
+/node_modules

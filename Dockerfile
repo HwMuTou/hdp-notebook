@@ -13,14 +13,12 @@ USER root
 COPY ./sources.list /etc/apt/sources.list
 COPY ./hdp.list /etc/apt/sources.list.d/hdp.list
 
+RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends hadoop
+RUN apt-get install -y --no-install-recommends spark2
+RUN apt-get install -y --no-install-recommends hive
 
-# R pre-requisites
-RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD && \
-    apt-get update && \
-    apt-get install -y --no-install-recommends \
-    hadoop \
-    spark2 \
-    hive && apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER $NB_UID
