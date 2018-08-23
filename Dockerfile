@@ -31,4 +31,6 @@ RUN apt-get install -y libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo
 
 RUN apt-get install -y spark2 hive
 
+RUN export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
 USER $NB_UID
