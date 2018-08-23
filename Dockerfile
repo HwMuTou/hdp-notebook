@@ -20,8 +20,8 @@ RUN wget http://public-repo-1.hortonworks.com/HDP/ubuntu16/2.x/updates/2.6.5.0/h
 RUN apt-get update
 
 # 安装hadoop
-RUN apt-get install hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl
+RUN apt-get install -y hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl
 
-RUN apt-get install libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo
+RUN apt-get install -y libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo
 
 USER $NB_UID
