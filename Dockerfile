@@ -12,16 +12,23 @@ USER root
 
 # 使用自定义的阿里源地址
 COPY ./sources.list /etc/apt/sources.list
+COPY ./hdp.list /etc/apt/sources.list.d/hdp.list
 
 # 加入HDP2.5.3 命令行安装地址
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD
-RUN wget http://public-repo-1.hortonworks.com/HDP/ubuntu16/2.x/updates/2.6.5.0/hdp.list -O /etc/apt/sources.list.d/hdp.list
+
+# 默认python命令使用Python2.7
+RUN export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
 RUN apt-get update
+
+RUN apt-get install -y zookeeper
 
 # 安装hadoop
 RUN apt-get install -y hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl
 
 RUN apt-get install -y libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo
+
+RUN apt-get install -y spark2 hive
 
 USER $NB_UID
