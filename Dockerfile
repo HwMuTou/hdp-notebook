@@ -22,7 +22,7 @@ RUN apt-get update && \
     export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH && \
     apt-get install -y zookeeper \
     hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl \
-    tez spark2 hive
+    tez spark2 spark-python hive
 
 RUN apt-get install -y openjdk-11-jdk-headless && \
     echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/profile && \
