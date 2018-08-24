@@ -21,7 +21,7 @@ COPY ./hdp.list /etc/apt/sources.list.d/hdp.list
 RUN apt-get update && \
     apt-get install -y openjdk-8-jdk-headless vim && \
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" >> /etc/profile && \
-    echo "export PATH=$JAVA_HOME/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" >> /etc/profile && \
+    echo "export PATH=$JAVA_HOME/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" >> /etc/profile
 
 RUN export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH && \
     apt-get install -y zookeeper \
