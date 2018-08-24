@@ -25,7 +25,7 @@ RUN export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 RUN export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH && \
     apt-get install -y zookeeper \
     hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl \
-    libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo \
+    libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev \
     tez spark2 hive && \
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
