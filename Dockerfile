@@ -25,6 +25,6 @@ RUN apt-get update && \
     tez spark2 hive
 
 RUN echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >>  /home/jovyan/.profile && \
-    echo "PATH=$JAVA_HOME/bin:$PATH" >> /home/jovyan/.profile && \
+    echo "PATH=$JAVA_HOME/bin:$PATH" >> /home/jovyan/.profile
 
 USER $NB_UID
