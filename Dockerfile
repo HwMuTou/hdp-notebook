@@ -10,7 +10,7 @@ ARG TEST_ONLY_BUILD
 
 USER root
 
-# 使用自定义的阿里源地址, 引入HDP软件源
+# 使用自定义源, 加速软件安装
 COPY ./sources.list /etc/apt/sources.list
 RUN apt-get update && \
     apt-get install -y gnupg && \
