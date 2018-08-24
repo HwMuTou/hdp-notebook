@@ -1,6 +1,6 @@
 # Copyright (c) Jupyter Development Team.
 # Distributed under the terms of the Modified BSD License.
-FROM jupyter/datascience-notebook:2bfbb7d17524
+FROM jupyter/datascience-notebook:latest
 
 LABEL maintainer="ICM Project"
 
