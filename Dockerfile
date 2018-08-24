@@ -19,16 +19,13 @@ COPY ./hdp.list /etc/apt/sources.list.d/hdp.list
 
 # 安装zookeeper hadoop spark hive
 RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk-headless && \
+    echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" >> /etc/profile && \
+    echo "export PATH=$JAVA_HOME/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" >> /etc/profile && \
     export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH && \
     apt-get install -y zookeeper \
     hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl \
     tez spark2 spark-python hive \
     vim
-
-RUN apt-get install -y openjdk-11-jdk-headless && \
-    echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/profile && \
-    echo "PATH=$JAVA_HOME/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" >> /etc/profile && \
-    echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /home/jovyan/profile && \
-    echo "PATH=$JAVA_HOME/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH" >> /home/jovyan/profile
 
 USER $NB_UID
