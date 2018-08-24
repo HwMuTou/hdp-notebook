@@ -24,6 +24,8 @@ RUN apt-get update && \
     hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl \
     tez spark2 hive
 
-RUN echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/profile
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /etc/profile && \
+    echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >>  /home/jovyan/.profile && \
+    echo "export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/" >> /home/root/.profile
 
 USER $NB_UID
