@@ -16,16 +16,14 @@ RUN apt-get update && \
     apt-get install -y gnupg && \
     apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD
 COPY ./hdp.list /etc/apt/sources.list.d/hdp.list
-RUN apt-get update
-
-# 默认python命令使用Python2.7
-RUN export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
 # 安装zookeeper hadoop spark hive
-RUN apt-get install -y zookeeper \
+RUN apt-get update && \
+    export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH && \
+    apt-get install -y zookeeper \
     hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl \
     tez spark2 hive
 
-RUN export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+RUN echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" >> /etc/profile
 
 USER $NB_UID
