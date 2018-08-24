@@ -14,23 +14,21 @@ USER root
 COPY ./sources.list /etc/apt/sources.list
 COPY ./hdp.list /etc/apt/sources.list.d/hdp.list
 
+RUN apt-get update
+
 # 加入HDP2.5.3 命令行安装地址
-RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD
+RUN apt-get install -y gnupg && \
+    apt-key adv --recv-keys --keyserver keyserver.ubuntu.com B9733A7A07513CAD
 
 # 默认python命令使用Python2.7
 RUN export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
-RUN apt-get update
-
-RUN apt-get install -y zookeeper
-
-# 安装hadoop
-RUN apt-get install -y hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl
-
-RUN apt-get install -y libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo
-
-RUN apt-get install -y tez spark2 hive
-
-RUN export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+# 安装zookeeper hadoop spark hive
+RUN export PATH=/usr/sbin:/usr/bin:/sbin:/bin:$PATH && \
+    apt-get install -y zookeeper \
+    hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce hadoop-client openssl \
+    libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo \
+    tez spark2 hive && \
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
 USER $NB_UID
