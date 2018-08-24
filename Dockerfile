@@ -29,7 +29,7 @@ RUN apt-get install -y hadoop hadoop-hdfs libhdfs0 hadoop-yarn hadoop-mapreduce 
 
 RUN apt-get install -y libsnappy1 libsnappy-dev liblzo2-2 liblzo2-dev hadooplzo
 
-RUN apt-get install -y spark2 hive
+RUN apt-get install -y tez spark2 hive
 
 RUN export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
